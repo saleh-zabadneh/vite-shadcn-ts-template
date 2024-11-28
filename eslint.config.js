@@ -11,7 +11,6 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   ...reactHooks.configs.recommended,
-
   prettier,
   {
     files: ["**/*.{ts,tsx,js,jsx}"],
@@ -25,6 +24,7 @@ export default tseslint.config(
       parser: tseslint.parser,
       parserOptions: {
         ecmaFeatures: { jsx: true },
+        project: "./tsconfig.json",
       },
     },
     plugins: {
@@ -40,9 +40,11 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       "prettier/prettier": "error",
-      // Add other rules from your .eslintrc.js here
       "no-unused-vars": "warn",
-      "no-unused-imports": "off",
+      "@typescript-eslint/no-unused-vars": ["warn"],
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
     },
     settings: {
       react: {
